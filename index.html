@@ -88,6 +88,7 @@
       $('#update').val(inserted.update);
       $('#urltext').val("execute=" + inserted.execute + "\nselect=" + inserted.select + "\nupdate=" + inserted.update);
       bespin.value = '';
+      setlinks();
     }
     function newstorage() {
       $.getScript("http://query.yahooapis.com/v1/public/yql?q=insert%20into%20yql.storage.admin%20(value)%20values%20('%20')&format=json&callback=newed");
@@ -144,6 +145,13 @@
     function cleareditor() {
       bespin.value = '';
     }
+
+    function setlinks() {
+      var linkenv = "http://developer.yahoo.com/yql/console?env=" + $("#execute").val();
+      var linktable = "http://developer.yahoo.com/yql/console?q=" + encodeURIComponent("use '" + $("#execute").val() + "' as table; desc table");
+      $("#linkenv").attr("href", linkenv);
+      $("#linktable").attr("href", linktable);
+    }
   </script>
 </head>
 <body>
@@ -151,12 +159,14 @@
 <h1>YQL Storage Editor</h1>
 
 <div id="urls">
-  <label for="execute">Execute URL:</label><input id="execute" type="text" size="40"><br>
+  <label for="execute">Execute URL:</label><input id="execute" type="text" size="40" onchange="setlinks()"><br>
   <label for="select">Select URL:</label><input id="select" type="text" size="40"><br>
   <label for="update">Update URL:</label><input id="update" type="text" size="40"><br>
 </div>
 <div id="copyableurls">
-  <textarea readonly id="urltext" rows="3" cols="40"></textarea>
+  <textarea readonly id="urltext" rows="3" cols="40"></textarea><br>
+  <a id="linkenv" target="_blank" href="">Open in YQL Console as Environment</a><br>
+  <a id="linktable" target="_blank" href="">Open in YQL Console as Table</a>
 </div>
 <div class="clear"></div>
 <button onclick="newstorage()">New</button>
