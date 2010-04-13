@@ -91,7 +91,7 @@
       setlinks();
     }
     function newstorage() {
-      $.getScript("http://query.yahooapis.com/v1/public/yql?q=insert%20into%20yql.storage.admin%20(value)%20values%20('%20')&format=json&callback=newed");
+      $.getScript("https://query.yahooapis.com/v1/public/yql?q=insert%20into%20yql.storage.admin%20(value)%20values%20('%20')&format=json&callback=newed");
     }
 
     function saved(response) {
@@ -106,7 +106,7 @@
       var value = bespin.value;
       var name = $('#update').val();
       // If it gets too big it needs to be a post...
-      $.getScript("http://query.yahooapis.com/v1/public/yql?q=update%20yql.storage%20set%20value%3D%40value%20where%20name%3D%40name&format=json&diagnostics=false&callback=saved&value=" + encodeURIComponent(value) + "&name=" + encodeURIComponent(name));
+      $.getScript("https://query.yahooapis.com/v1/public/yql?q=update%20yql.storage%20set%20value%3D%40value%20where%20name%3D%40name&format=json&diagnostics=false&callback=saved&value=" + encodeURIComponent(value) + "&name=" + encodeURIComponent(name));
     }
 
     function loaded(response) {
@@ -120,7 +120,7 @@
     }
     function loadstorage() {
       var name = $('#select').val();
-      $.getScript("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yql.storage%20where%20name%3D%40name&format=json&diagnostics=false&callback=loaded&name=" + encodeURIComponent(name));
+      $.getScript("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yql.storage%20where%20name%3D%40name&format=json&diagnostics=false&callback=loaded&name=" + encodeURIComponent(name));
     }
 
     function deleted(response) {
@@ -139,7 +139,7 @@
 
     function deletestorage() {
       var name = $('#update').val();
-      $.getScript("http://query.yahooapis.com/v1/public/yql?q=delete%20from%20yql.storage%20where%20name%3D%40name&format=json&diagnostics=false&callback=deleted&name=" + encodeURIComponent(name));
+      $.getScript("https://query.yahooapis.com/v1/public/yql?q=delete%20from%20yql.storage%20where%20name%3D%40name&format=json&diagnostics=false&callback=deleted&name=" + encodeURIComponent(name));
     }
 
     function cleareditor() {
@@ -147,8 +147,8 @@
     }
 
     function setlinks() {
-      var linkenv = "http://developer.yahoo.com/yql/console?env=" + $("#execute").val();
-      var linktable = "http://developer.yahoo.com/yql/console?q=" + encodeURIComponent("use '" + $("#execute").val() + "' as table; desc table");
+      var linkenv = "https://developer.yahoo.com/yql/console?env=" + $("#execute").val();
+      var linktable = "https://developer.yahoo.com/yql/console?q=" + encodeURIComponent("use '" + $("#execute").val() + "' as table; desc table");
       $("#linkenv").attr("href", linkenv);
       $("#linktable").attr("href", linktable);
     }
